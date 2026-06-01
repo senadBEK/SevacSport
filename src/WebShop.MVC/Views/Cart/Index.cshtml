@@ -1,0 +1,88 @@
+﻿@model List<WebShop.MVC.ViewModels.CartItemViewModel>
+
+@{
+    ViewData["Title"] = "Korpa";
+    var total = Model.Sum(x => x.Total);
+}
+
+<h1 class="mb-4">Korpa</h1>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Korpa je prazna.
+    </div>
+
+    <a asp-controller="Product" asp-action="Index" class="btn btn-primary">
+        Nazad na proizvode
+    </a>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Slika</th>
+                    <th>Proizvod</th>
+                    <th>Cena</th>
+                    <th>Količina</th>
+                    <th>Ukupno</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.ImagePath))
+                            {
+                                <img src="@item.ImagePath" style="width:80px;height:80px;object-fit:contain;" />
+                            }
+                            else
+                            {
+                                <div class="border rounded d-flex align-items-center justify-content-center bg-light"
+                                     style="width:80px;height:80px;">
+                                    Nema slike
+                                </div>
+                            }
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Price.ToString("N2") RSD</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <form asp-action="Decrease" method="post" class="d-inline">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">-</button>
+                                </form>
+
+                                <span>@item.Quantity</span>
+
+                                <form asp-action="Increase" method="post" class="d-inline">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+                                </form>
+                            </div>
+                        </td>
+                        <td>@item.Total.ToString("N2") RSD</td>
+                        <td>
+                            <form asp-action="Remove" method="post">
+                                <input type="hidden" name="productId" value="@item.ProductId" />
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Ukloni</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <h4 class="mb-0">Ukupno: @total.ToString("N2") RSD</h4>
+
+        <form asp-action="Clear" method="post">
+            <button type="submit" class="btn btn-danger">Isprazni korpu</button>
+        </form>
+    </div>
+}

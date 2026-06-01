@@ -1,0 +1,18 @@
+# Visual Studio
+.vs/
+**/.vs/
+*.user
+*.suo
+
+# Build folderi
+**/bin/
+**/obj/
+Debug/
+Release/
+
+# Logs
+*.log
+
+# OS fajlovi
+.DS_Store
+Thumbs.db

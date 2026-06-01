@@ -1,0 +1,20 @@
+﻿@model WebShop.MVC.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Detalji korisnika";
+}
+
+<h1>Detalji korisnika</h1>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <p><strong>ID:</strong> @Model.Id</p>
+        <p><strong>Korisničko ime:</strong> @Model.Username</p>
+        <p><strong>Ime i prezime:</strong> @Model.FullName</p>
+        <p><strong>Uloga:</strong> @Model.Role</p>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Nazad</a>
+</div>

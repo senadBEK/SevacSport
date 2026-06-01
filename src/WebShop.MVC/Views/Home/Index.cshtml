@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Početna";
+}
+
+<div class="hero-section text-center py-5 mb-5">
+    <div class="container">
+        <h1 class="display-3 fw-bold">ŠevacSport</h1>
+        <p class="lead mt-3">
+            Web informacioni sistem za prodaju sportske opreme
+        </p>
+        <p class="mt-3">
+            Pregled kategorija, upravljanje proizvodima i administracija sportske opreme
+            u okviru jedne moderne web aplikacije.
+        </p>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-dark btn-lg mt-3">Pogledaj proizvode</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="feature-card h-100 p-4 shadow-sm rounded">
+                <h3>Kategorije</h3>
+                <p>
+                    Organizovan prikaz sportske opreme kroz jasno definisane kategorije
+                    kao što su fudbal, košarka, odbojka, fitness i trening oprema.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card h-100 p-4 shadow-sm rounded">
+                <h3>Proizvodi</h3>
+                <p>
+                    Evidencija proizvoda sa osnovnim podacima kao što su naziv, opis,
+                    cena, brend, sport i veličina.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card h-100 p-4 shadow-sm rounded">
+                <h3>Administracija</h3>
+                <p>
+                    Jednostavno dodavanje, izmena i brisanje kategorija i proizvoda
+                    kroz administratorski deo sistema.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 p-4 bg-light rounded shadow-sm">
+        <h2>O sistemu</h2>
+        <p class="mb-0">
+            ŠevacSport je razvijen kao seminarski rad iz oblasti informacionih sistema,
+            sa ciljem da prikaže praktičnu primenu ASP.NET Core MVC arhitekture,
+            Entity Framework Core tehnologije i SQL Server baze podataka.
+        </p>
+    </div>
+</div>

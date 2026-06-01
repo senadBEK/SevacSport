@@ -1,0 +1,73 @@
+﻿@model WebShop.MVC.ViewModels.ProductViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalji</h1>
+
+<div>
+    <h4>Proizvod</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt class="col-sm-2">Cena</dt>
+        <dd class="col-sm-10">@Model.Price</dd>
+
+        <dt class="col-sm-2">Brend</dt>
+        <dd class="col-sm-10">@Model.Brand</dd>
+
+        <dt class="col-sm-2">Sport</dt>
+        <dd class="col-sm-10">@Model.Sport</dd>
+
+        <dt class="col-sm-2">Veličina</dt>
+        <dd class="col-sm-10">@Model.Size</dd>
+
+        @if (!string.IsNullOrEmpty(Model.ImagePath))
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </dt>
+            <div class="mb-2">
+                <img src="@Model.ImagePath" width="150" />
+            </div>
+        }
+        else
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </dt>
+            <div class="mb-2">
+                <span>Proizvod nema sliku.</span>
+            </div>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Izmeni</a> |
+    <a asp-action="Index">Nazad na proizvode</a>
+</div>
